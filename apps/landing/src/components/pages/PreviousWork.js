@@ -27,9 +27,9 @@ export default function PreviousWorkSection() {
         Previous Work
       </h2>
       <div style={contentStyle}>
-        {previousWorks.map((previousWork) => {
+        {previousWorks.map((previousWork, index) => {
           return (
-            <PreviousWork.Wrapper>
+            <PreviousWork.Wrapper key={index}>
               <PreviousWork.Title>{previousWork.name}</PreviousWork.Title>
               <PreviousWork.Display src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=640:*" />
               <PreviousWork.TechUsed tech={previousWork["tech-used"]} />

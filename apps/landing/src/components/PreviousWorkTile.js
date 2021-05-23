@@ -37,8 +37,12 @@ function Display(props) {
 function TechUsed(props) {
   return (
     <div style={techUsedStyle}>
-      {(props.tech || []).map((tech) => {
-        return <span style={{ marginRight: "1rem" }}>{tech}</span>;
+      {(props.tech || []).map((tech, index) => {
+        return (
+          <span key={index} style={{ marginRight: "1rem" }}>
+            {tech}
+          </span>
+        );
       })}
     </div>
   );
