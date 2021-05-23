@@ -1,0 +1,18 @@
+[
+  {
+    "name": "User Management App",
+    "preview-link": "//google",
+    "source-link": "//github.com",
+    "description": "A Firebase/React.js app architected/developed from the ground up by me. Inititially meant for internal use only, but later expanded to allow clients to login and administrate their own users themselves.",
+    "date-developed": "",
+    "tech-used": ["React.js", "Firebase", "HTML", "CSS", "JS"]
+  },
+  {
+    "name": "Weather App",
+    "preview-link": "google.com",
+    "source-link": "github.com",
+    "description": "One of the first applications I made as a way to test my skills at the time of development.",
+    "date-developed": "",
+    "tech-used": ["AWS", "Flask"]
+  }
+]
