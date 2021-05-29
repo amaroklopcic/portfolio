@@ -1,17 +1,19 @@
-import os, importlib
+import importlib
+from pathlib import Path
 from flask import Flask, redirect
 
 app = Flask(__name__)
 
-apps_directory = os.path.join(os.path.dirname(__file__), "apps")
-
 # automatically pull in blueprints from ./apps directory
-for app_directory in os.listdir(apps_directory):
-    directory = os.listdir(f"{apps_directory}/{app_directory}")
-    print(directory)
-    if "blueprint.py" in directory:
-        module = importlib.import_module(f".apps.{app_directory}.blueprint", __name__)
-        app.register_blueprint(module.blueprint, url_prefix=f"/{app_directory}")
+path_of_this_file = Path(__file__).resolve()
+apps_directory = path_of_this_file.parent.joinpath("apps")
+for app_directory in apps_directory.iterdir():
+    if not app_directory.is_dir():
+        continue
+    if app_directory.joinpath("blueprint.py").exists():
+        module_name = str(app_directory).replace(str(app_directory.parent) + "/", "")
+        module = importlib.import_module(f".apps.{module_name}.blueprint", __name__)
+        app.register_blueprint(module.blueprint, url_prefix=f"/{module_name}")
 
 @app.route("/")
 def home():
