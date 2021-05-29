@@ -12,7 +12,7 @@ for app_directory in apps_directory.iterdir():
         continue
     if app_directory.joinpath("blueprint.py").exists():
         module_name = str(app_directory).replace(str(app_directory.parent) + "/", "")
-        module = importlib.import_module(f".apps.{module_name}.blueprint", __name__)
+        module = importlib.import_module(f".apps.{module_name}.blueprint", "portfolio")
         app.register_blueprint(module.blueprint, url_prefix=f"/{module_name}")
 
 @app.route("/")
